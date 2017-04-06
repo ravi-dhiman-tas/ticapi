@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_swagger',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -106,9 +108,32 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
+    # 'EXCEPTION_HANDLER': 'sides.exception.custom_exception_handler',
+    'PAGE_SIZE': 100,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+        'rest_framework.permissions.IsAuthenticated'
+    ],
+    'DEFAULT_PARSER_CLASSES': (
+       'rest_framework.parsers.JSONParser',
+       'rest_framework.parsers.FormParser',
+       'rest_framework.parsers.MultiPartParser',
+   ),
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
+}
+
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "api_key": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "JSON_EDITOR": True,
+    "SHOW_REQUEST_HEADERS": True
 }
 
 
