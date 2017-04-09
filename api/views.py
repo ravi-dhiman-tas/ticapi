@@ -63,7 +63,14 @@ class AuthenticateUserViewSet(BaseAPIView):
         try:
             user_request = get_object_or_404(User, email__iexact=email)
         except:
-            return Response(get_error_data(codes.FAILURE, constants.FAILURE), status.HTTP_400_BAD_REQUEST)
+            content = {
+                'status': {
+                    'isSuccess': False,
+                    'code': "FAILURE",
+                    'message': "Invalid Credentials"
+                }
+            }
+            return Response(content, status.HTTP_400_BAD_REQUEST)
 
         username = user_request.username
         user = authenticate(username=username, password=password)
@@ -85,8 +92,8 @@ class AuthenticateUserViewSet(BaseAPIView):
             content = {
                 'status': {
                     'isSuccess': False,
-                    'code': code,
-                    'message': message
+                    'code': "FAILURE",
+                    'message': "Invalid Credentials"
                 }
             }
         return Response(content, status.HTTP_200_OK)
