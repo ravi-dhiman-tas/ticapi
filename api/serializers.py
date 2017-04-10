@@ -3,7 +3,7 @@ from rest_framework import serializers, exceptions
 from django.contrib.auth.models import User
 
 from api.models import Project, Task
-from api.utils import create_username
+from api.utils import create_username, pretty_date
 
 
 class AuthCustomTokenSerializer(serializers.Serializer):
@@ -54,12 +54,17 @@ class ProjectCreateSerializer(serializers.ModelSerializer):
 
 class ProjectSerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
+    modified = serializers.SerializerMethodField()
+
     class Meta:
         model = Project
         exclude = ()
 
     def get_user(self, obj):
         return UserSerializer(obj.user).data
+
+    def get_modified(self, obj):
+        return pretty_date(obj.modified)
 
 
 class TaskCreateSerializer(serializers.ModelSerializer):
@@ -77,6 +82,7 @@ class TaskEditSerializer(serializers.ModelSerializer):
 class TaskSerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
     project = serializers.SerializerMethodField()
+    modified = serializers.SerializerMethodField()
 
     class Meta:
         model = Task
@@ -87,3 +93,6 @@ class TaskSerializer(serializers.ModelSerializer):
 
     def get_project(self, obj):
         return ProjectSerializer(obj.project).data
+
+    def get_modified(self, obj):
+        return pretty_date(obj.modified)

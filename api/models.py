@@ -13,6 +13,7 @@ class Project(models.Model):
     user = models.ForeignKey(User)
     delete = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True, null=True, blank=True)
 
 
 STATUS_CHOICES = (
@@ -31,3 +32,4 @@ class Task(models.Model):
     user = models.ForeignKey(User)
     project = models.ForeignKey(Project)
     created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True, null=True, blank=True)
