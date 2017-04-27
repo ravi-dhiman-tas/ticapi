@@ -70,7 +70,7 @@ class AuthenticateUserViewSet(BaseAPIView):
                     'message': "Invalid Credentials"
                 }
             }
-            return Response(content, status.HTTP_400_BAD_REQUEST)
+            return Response(content, status.HTTP_200_OK)
 
         username = user_request.username
         user = authenticate(username=username, password=password)
