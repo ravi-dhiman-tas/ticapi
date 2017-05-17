@@ -17,7 +17,7 @@ from django.db.models import Q
 
 from api.models import Project, Task
 from api.serializers import (AuthCustomTokenSerializer, UserSerializer, SignupSerializer, ProjectCreateSerializer, ProjectSerializer,
-    TaskCreateSerializer, TaskSerializer
+    TaskCreateSerializer, TaskSerializer, TaskEditSerializer
 )
 
 class BaseAPIView(APIView):
