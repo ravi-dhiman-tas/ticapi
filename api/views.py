@@ -286,7 +286,7 @@ class ProjectDetailViewSet(BaseAPIView):
             project.viewed = project.viewed + 1
             project.save()
             project_serializer = ProjectSerializer(project, context=self.get_serializer_context())
-            tasks = project.task_set.filter(delete=False).order_by('-viewed', '-created')
+            tasks = project.task_set.filter(delete=False).order_by('-created')
             if query:
                 for q in query.split():
                     tasks = tasks.filter(
