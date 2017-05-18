@@ -6,6 +6,13 @@ from api.models import Project, Task
 from api.utils import create_username, pretty_date
 
 
+class CreatedDateSerializer(serializers.Serializer):
+    created = serializers.SerializerMethodField()
+
+    def get_created(self, obj):
+        return obj.created.strftime("%b %d, %Y at %H:%M")
+
+
 class AuthCustomTokenSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField()
@@ -52,7 +59,7 @@ class ProjectCreateSerializer(serializers.ModelSerializer):
         fields = ('name', 'description',)
 
 
-class ProjectSerializer(serializers.ModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer, CreatedDateSerializer):
     user = serializers.SerializerMethodField()
     modified = serializers.SerializerMethodField()
 
@@ -79,7 +86,7 @@ class TaskEditSerializer(serializers.ModelSerializer):
         fields = ('name', 'description',)
 
 
-class TaskSerializer(serializers.ModelSerializer):
+class TaskSerializer(serializers.ModelSerializer, CreatedDateSerializer):
     user = serializers.SerializerMethodField()
     project = serializers.SerializerMethodField()
     modified = serializers.SerializerMethodField()
