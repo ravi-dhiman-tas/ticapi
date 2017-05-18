@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from datetime import datetime
+
 from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework import parsers
@@ -234,7 +236,21 @@ class ProjectDetailViewSet(BaseAPIView):
                 {
                     'name': 'q',
                     'required': False,
-                    'description': 'query',
+                    'description': 'query on task',
+                    'type': 'string',
+                    'paramType': 'query'
+                },
+                {
+                    'name': 'from',
+                    'required': False,
+                    'description': 'query on task from date',
+                    'type': 'string',
+                    'paramType': 'query'
+                },
+                {
+                    'name': 'to',
+                    'required': False,
+                    'description': 'query on task to date',
                     'type': 'string',
                     'paramType': 'query'
                 },
@@ -264,6 +280,8 @@ class ProjectDetailViewSet(BaseAPIView):
         """
         try:
             query = request.GET.get("q", "")
+            from_date = request.GET.get("from", "")
+            to_date = request.GET.get("to", "")
             project = Project.objects.get(pk=pk, user=request.user, delete=False)
             project.viewed = project.viewed + 1
             project.save()
@@ -274,6 +292,15 @@ class ProjectDetailViewSet(BaseAPIView):
                     tasks = tasks.filter(
                         Q(seq__icontains=q) | Q(name__icontains=q) | Q(description__icontains=q)
                     ).distinct().order_by('-viewed', '-created')
+
+            if from_date and to_date:
+                tasks = tasks.filter(
+                    created__date__gte=datetime.strptime(from_date, "%Y-%m-%d").date(),
+                    created__date__lte=datetime.strptime(to_date, "%Y-%m-%d").date(),
+                ).distinct().order_by('-viewed', '-created')
+            elif from_date and not to_date:
+                tasks = tasks.filter(created__date=datetime.strptime(from_date, "%Y-%m-%d").date())
+
             task_serializer = TaskSerializer(tasks, many=True, context=self.get_serializer_context())
             content = {
                 'status': {
