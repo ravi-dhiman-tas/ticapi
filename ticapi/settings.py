@@ -154,17 +154,12 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
-
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-else:
-    #C:\Users\vantu\Desktop\WDJP-final\pyadmin\pyadmin\static
-    #STATICFILES_DIRS = ('D:/TONY/ECLIPSEworkspace/pyadmin/pyadmin/static',)
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, "static"),
-    ]
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
