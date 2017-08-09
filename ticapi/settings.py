@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '=x0pc*0z5kk1@profdm143f+6+=rmk3ufslir3&+8f@o#&@)$9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -156,12 +156,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
 
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+else:
+    #C:\Users\vantu\Desktop\WDJP-final\pyadmin\pyadmin\static
+    #STATICFILES_DIRS = ('D:/TONY/ECLIPSEworkspace/pyadmin/pyadmin/static',)
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static"),
+    ]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
