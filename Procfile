@@ -1,2 +1,2 @@
-web: gunicorn altfund_website.wsgi
-release: python3 manage.py migrate --noinput
+web: gunicorn ticapi.wsgi
+release: python manage.py migrate --noinput
