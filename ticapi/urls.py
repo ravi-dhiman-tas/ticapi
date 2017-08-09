@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from django.views.generic import TemplateView
+
 from schema_generator import get_swagger_view
 
 schema_view = get_swagger_view(title='tic API')
@@ -23,5 +25,7 @@ schema_view = get_swagger_view(title='tic API')
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('api.urls')),
-    url(r'^', schema_view),
+    url(r'^$', TemplateView.as_view(template_name='app.html')),
+    url(r'^api-docs/', schema_view),
+
 ]

@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="theme-color" content="#545EE1">
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>TIC App</title>
+</head>
+
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+        <div class="loading-dots"><span class="loading-one"></span> <span class="loading-one"></span> <span class="loading-one"></span>
+            <div class="loading-base"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'js/app.min.js' %}"></script>
+</body>
+
+</html>
