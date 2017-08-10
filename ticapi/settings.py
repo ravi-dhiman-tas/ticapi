@@ -155,6 +155,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+if not DEBUG:
+    SITE_URL = 'https://ticreact.herokuapp.com'
+    SITE_RELATIVE_URL = 'https://ticreact.herokuapp.com'
+
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
