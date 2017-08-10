@@ -25,7 +25,12 @@ schema_view = get_swagger_view(title='tic API')
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('api.urls')),
+    # App URLs
     url(r'^$', TemplateView.as_view(template_name='app.html')),
+    url(r'^login/', TemplateView.as_view(template_name='app.html')),
+    url(r'^signup/', TemplateView.as_view(template_name='app.html')),
+    url(r'^projects/', TemplateView.as_view(template_name='app.html')),
+    url(r'^app/', TemplateView.as_view(template_name='app.html')),
+    # /App URLs
     url(r'^api-docs/', schema_view),
-
 ]
