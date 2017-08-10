@@ -8,7 +8,6 @@ django-cors-headers==2.0.2
 django-filter==1.0.2
 django-rest-swagger==2.1.1
 djangorestframework==3.6.2
-gunicorn==19.7.1
 idna==2.5
 itypes==1.1.0
 Jinja2==2.9.6
@@ -23,3 +22,4 @@ simplejson==3.11.1
 six==1.10.0
 uritemplate==3.0.0
 urllib3==1.22
+whitenoise==3.3.0
