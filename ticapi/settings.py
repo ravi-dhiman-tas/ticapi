@@ -23,7 +23,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '=x0pc*0z5kk1@profdm143f+6+=rmk3ufslir3&+8f@o#&@)$9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -154,10 +154,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-if not DEBUG:
-    SITE_URL = 'https://ticreact.herokuapp.com'
-    SITE_RELATIVE_URL = 'https://ticreact.herokuapp.com'
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
