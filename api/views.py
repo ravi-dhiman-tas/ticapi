@@ -254,6 +254,13 @@ class ProjectDetailViewSet(BaseAPIView):
                     'type': 'string',
                     'paramType': 'query'
                 },
+                {
+                    'name': 'status',
+                    'required': False,
+                    'description': 'query on status',
+                    'type': 'string',
+                    'paramType': 'query'
+                }
             ]
         },
         'put':{
@@ -282,6 +289,7 @@ class ProjectDetailViewSet(BaseAPIView):
             query = request.GET.get("q", "")
             from_date = request.GET.get("from", "")
             to_date = request.GET.get("to", "")
+            task_status = request.GET.get("status", "")
             project = Project.objects.get(pk=pk, user=request.user, delete=False)
             project.viewed = project.viewed + 1
             project.save()
@@ -300,6 +308,9 @@ class ProjectDetailViewSet(BaseAPIView):
                 ).distinct().order_by('-viewed', '-created')
             elif from_date and not to_date:
                 tasks = tasks.filter(created__date=datetime.strptime(from_date, "%Y-%m-%d").date())
+
+            if task_status:
+                tasks = tasks.filter(status=int(task_status))
 
             task_serializer = TaskSerializer(tasks, many=True, context=self.get_serializer_context())
             content = {
@@ -447,6 +458,12 @@ class TaskDetailViewSet(BaseAPIView):
                     'name': 'description',
                     'required': True,
                     'description': 'Description of task',
+                    'type': 'string'
+                },
+                {
+                    'name': 'status',
+                    'required': False,
+                    'description': 'status of task',
                     'type': 'string'
                 },
             ]
