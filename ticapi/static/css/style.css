@@ -359,71 +359,83 @@ a {
   border-radius: 10px;
   background-color: #d6d6e6; }
 
-.init-loading .loading-dots {
+.init-loading {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%); }
-  .init-loading .loading-dots .loading-base {
-    display: block;
-    background: #545EE1;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%; }
-  .init-loading .loading-dots .loading-one {
-    display: block;
-    opacity: 0;
-    border-radius: 50%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 1110; }
+  .init-loading.hide {
+    display: none; }
+  .init-loading .loading-dots {
     position: absolute;
     left: 50%;
     top: 50%;
-    border: 1px solid #545EE1; }
-.init-loading .loading-dots span:nth-child(1) {
-  width: 20px;
-  height: 20px;
-  margin-top: -10px;
-  margin-left: -10px;
-  animation: loading-dot-1 1.8s ease-in-out 0.2s infinite; }
-.init-loading .loading-dots span:nth-child(2) {
-  width: 40px;
-  height: 40px;
-  margin-top: -20px;
-  margin-left: -20px;
-  animation: loading-dot-2 1.8s ease-in-out 0.4s infinite; }
-.init-loading .loading-dots span:nth-child(3) {
-  width: 60px;
-  height: 60px;
-  margin-top: -30px;
-  margin-left: -30px;
-  animation: loading-dot-3 1.8s ease-in-out 0.6s infinite; }
+    transform: translate(-50%, -50%); }
+    .init-loading .loading-dots .loading-base {
+      display: block;
+      background: #545EE1;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%; }
+    .init-loading .loading-dots .loading-one {
+      display: block;
+      opacity: 0;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      border: 1px solid #545EE1; }
+  .init-loading .loading-dots span:nth-child(1) {
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    animation: loading-dot-1 1.8s ease-in-out 0.2s infinite; }
+  .init-loading .loading-dots span:nth-child(2) {
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    margin-left: -20px;
+    animation: loading-dot-2 1.8s ease-in-out 0.4s infinite; }
+  .init-loading .loading-dots span:nth-child(3) {
+    width: 60px;
+    height: 60px;
+    margin-top: -30px;
+    margin-left: -30px;
+    animation: loading-dot-3 1.8s ease-in-out 0.6s infinite; }
 
 @keyframes loading-dot-1 {
   5% {
     transform: scale(0, 0);
-    opacity: .1; }
+    opacity: 0.1; }
   50% {
     transform: scale(2, 2);
-    opacity: .2; }
+    opacity: 0.2; }
   100% {
     transform: scale(2, 2);
     opacity: 0; } }
 @keyframes loading-dot-2 {
   5% {
     transform: scale(0, 0);
-    opacity: .1; }
+    opacity: 0.1; }
   50% {
     transform: scale(2, 2);
-    opacity: .2; }
+    opacity: 0.2; }
   100% {
     transform: scale(2, 2);
     opacity: 0; } }
 @keyframes loading-dot-3 {
   5% {
     transform: scale(0, 0);
-    opacity: .1; }
+    opacity: 0.1; }
   50% {
     transform: scale(2, 2);
-    opacity: .2; }
+    opacity: 0.2; }
   100% {
     transform: scale(1.8, 1.8);
     opacity: 0; } }
@@ -2174,6 +2186,8 @@ select.form-control {
   font-size: 12.6px;
   margin-bottom: 10px;
   color: #4D4D4D; }
+  .label.block {
+    display: block; }
 
 .form-separator {
   display: block;
@@ -2508,11 +2522,11 @@ select.form-control {
     .confirm-modal-content .modal-header {
       padding: 15px; }
 
-[markdown] p {
+.markdown p {
   font-size: 21px;
   line-height: 34px;
   font-family: Georgia, Cambria, "Times New Roman", Times, serif; }
-[markdown] blockquote {
+.markdown blockquote {
   border-left: 4px solid #545EE1;
   background: #fff;
   box-shadow: 0 2px 12px #f2f2f7;
@@ -2521,7 +2535,7 @@ select.form-control {
   padding: 1em 30px 1em 60px;
   font-style: italic;
   position: relative; }
-  [markdown] blockquote::before {
+  .markdown blockquote::before {
     content: "“";
     font-family: Georgia, serif;
     font-size: 80px;
@@ -2531,7 +2545,7 @@ select.form-control {
     left: 10px;
     top: 45px;
     font-style: initial; }
-  [markdown] blockquote p {
+  .markdown blockquote p {
     font-style: italic; }
 
 code {
@@ -2559,7 +2573,7 @@ pre[class*="language-"] {
   background: none;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   text-align: left;
-  text-shadow: 0 -.1em .2em black;
+  text-shadow: 0 -0.1em 0.2em black;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
@@ -2581,7 +2595,7 @@ pre[class*="language-"] {
 
 /* Code blocks */
 pre[class*="language-"] {
-  margin: .5em 0;
+  margin: 0.5em 0;
   overflow: auto;
   padding: 1.5em; }
 
@@ -2606,10 +2620,10 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
-  border-radius: .3em;
-  border: .13em solid #545454;
-  box-shadow: 1px 1px .3em -.1em black inset;
-  padding: .15em .2em .05em;
+  border-radius: 0.3em;
+  border: 0.13em solid #545454;
+  box-shadow: 1px 1px 0.3em -0.1em black inset;
+  padding: 0.15em 0.2em 0.05em;
   white-space: normal; }
 
 .token.comment,
@@ -2619,10 +2633,10 @@ code[class*="language-"]::selection, code[class*="language-"] ::selection {
   color: #787878; }
 
 .token.punctuation {
-  opacity: .7; }
+  opacity: 0.7; }
 
 .namespace {
-  opacity: .7; }
+  opacity: 0.7; }
 
 .token.tag,
 .token.boolean,
@@ -2690,7 +2704,7 @@ pre[data-line] {
   border-top: 1px dashed #545454;
   left: 0;
   line-height: inherit;
-  margin-top: .75em;
+  margin-top: 0.75em;
   padding: inherit 0;
   pointer-events: none;
   position: absolute;
@@ -2706,17 +2720,17 @@ pre[data-line] {
   color: #f5f2f0;
   content: attr(data-start);
   font: bold 65%/1.5 sans-serif;
-  left: .6em;
+  left: 0.6em;
   min-width: 1em;
-  padding: 0 .5em;
+  padding: 0 0.5em;
   position: absolute;
   text-align: center;
   text-shadow: none;
-  top: .4em;
-  vertical-align: .3em; }
+  top: 0.4em;
+  vertical-align: 0.3em; }
 
 .line-highlight[data-end]:after {
-  bottom: .4em;
+  bottom: 0.4em;
   content: attr(data-end);
   top: auto; }
 
@@ -2737,14 +2751,13 @@ pre[data-line] {
 .md-editor .preview {
   display: block;
   width: 100%;
-  padding: 12px 0;
   font-size: 14px;
   color: #4D4D4D;
   min-height: 250px;
   line-height: 28px;
-  -webkit-transition: border .4s ease-in-out;
-  -moz-transition: border .4s ease-in-out;
-  transition: border .4s ease-in-out; }
+  -webkit-transition: border 0.4s ease-in-out;
+  -moz-transition: border 0.4s ease-in-out;
+  transition: border 0.4s ease-in-out; }
 
 .preview-container {
   position: relative;
@@ -2759,10 +2772,10 @@ pre[data-line] {
     background: #CED0D5;
     color: #4D4D4D;
     padding: 5px 14px;
-    opacity: .7;
-    -webkit-transition: opacity .4s ease-in-out;
-    -moz-transition: opacity .4s ease-in-out;
-    transition: opacity .4s ease-in-out; }
+    opacity: 0.7;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    -moz-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out; }
     .preview-container .edit-text:hover {
       opacity: 1; }
 
@@ -2771,21 +2784,36 @@ pre[data-line] {
   display: none; }
   .editor-container.open {
     display: block; }
-  .editor-container .done, .editor-container .cancel {
-    position: absolute;
-    bottom: 100%;
-    right: 0px;
-    display: inline-block;
-    background: #CED0D5;
+  .editor-container .header {
+    padding: 15px 0; }
+  .editor-container textarea.editor {
+    display: block;
+    width: 100%;
+    min-height: 300px;
+    padding: 8px 12px;
+    border: 1px solid #EAEAEA;
+    font-size: 14px;
     color: #4D4D4D;
-    padding: 5px 14px;
-    opacity: .7;
-    -webkit-transition: opacity .4s ease-in-out;
-    -moz-transition: opacity .4s ease-in-out;
-    transition: opacity .4s ease-in-out; }
-    .editor-container .done:hover, .editor-container .cancel:hover {
-      opacity: 1; }
-  .editor-container .cancel {
-    right: 42px; }
+    line-height: 28px;
+    -moz-border-radius: 4px;
+    border-radius: 4px; }
+    @media (min-width: 1200px) {
+      .editor-container textarea.editor {
+        min-height: 450px; } }
+    .editor-container textarea.editor:focus {
+      outline: none;
+      border-color: #545EE1; }
 
-/*# sourceMappingURL=style.css.map */
+.editor-preview {
+  position: relative;
+  display: none;
+  border: 1px solid #EAEAEA;
+  padding: 0 15px 15px; }
+  .editor-preview.open {
+    display: block; }
+  .editor-preview .header {
+    padding: 15px 0; }
+  .editor-preview textarea {
+    min-height: 250px; }
+    .editor-preview textarea.hide {
+      display: none; }

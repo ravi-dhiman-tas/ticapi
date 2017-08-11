@@ -16,10 +16,15 @@
 
 <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="init-loading" id="loading">
+      <div class="loading-dots">
+        <span class="loading-one"></span>
+        <span class="loading-one"></span>
+        <span class="loading-one"></span>
+        <div class="loading-base"></div>
+      </div>
+    </div>
     <div id="root">
-        <div class="loading-dots"><span class="loading-one"></span> <span class="loading-one"></span> <span class="loading-one"></span>
-            <div class="loading-base"></div>
-        </div>
     </div>
     <script type="text/javascript" src="{% static 'js/app.min.js' %}"></script>
 </body>
