@@ -462,7 +462,7 @@ class TaskDetailViewSet(BaseAPIView):
                 },
                 {
                     'name': 'status',
-                    'required': False,
+                    'required': True,
                     'description': 'status of task',
                     'type': 'string'
                 },
