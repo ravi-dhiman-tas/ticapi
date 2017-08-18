@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('api.urls')),
     # App URLs
-    url(r'^$', TemplateView.as_view(template_name='app.html')),
+    url(r'^$', TemplateView.as_view(template_name='home.html')),
     url(r'^login/', TemplateView.as_view(template_name='app.html')),
     url(r'^signup/', TemplateView.as_view(template_name='app.html')),
     url(r'^projects/', TemplateView.as_view(template_name='app.html')),

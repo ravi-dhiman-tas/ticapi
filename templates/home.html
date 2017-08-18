@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TIC</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <div class="section section-lg">
+        <div class="navbar absolute">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <img src="{% static 'images/tic-logo.svg' %}" alt="tic_logo" width="50px">
+                    </div>
+                    <div class="col text-right">
+                        <a href="/login/" class="btn btn-link">Log in</a>
+                        <a href="/signup/" class="btn btn-outline btn-sm">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8 push-2">
+                <h1 class="section-heading text-center">
+                    Plan your day-to-day tasks, track and improve your productivity.
+                </h1>
+                <div class="pad text-center">
+                    <a href="/signup/" class="btn btn-primary" style="width: 160px">Try it free</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="overlay-image opacity-2 bg-cover" style="background-image: url({% static 'images/bg-pattern.jpg' %})"></div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-sm-6 text-center">
+                    <img src="{% static 'images/asset-1.png' %}" alt="Tic_project_page" width="350px">
+                </div>
+                <div class="col-sm-6">
+                    <h1 class="section-heading medium">
+                        Distinguish your tasks with adding new projects.
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="overlay-color bg-native"></div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <h1 class="section-heading medium">
+                        Work smarter than paper with markdown editor. Enhance your task content with links, table, code, attachments*.
+                    </h1>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <img src="{% static 'images/asset-2.png' %}" alt="Tic_app_page" width="350px">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section section-sm">
+        <div class="container text-center">
+            <h1 class="section-heading medium text-white">
+                Add a second brain.
+            </h1>
+            <div class="pad">
+                <span class="pad-right"><a href="#" class="btn btn-white" style="width: 160px">Log in</a></span>
+                <a href="/signup/" class="btn btn-white" style="width: 160px">Try it free</a>
+            </div>
+        </div>
+        <div class="overlay-color bg-primary"></div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    &copy; TIC. All rights reserved.
+                </div>
+                <div class="col">
+                    <div class="text-right">
+                        Version 1.0.0-beta, Desktop application.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
